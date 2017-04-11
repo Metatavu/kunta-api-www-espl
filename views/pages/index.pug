@@ -1,0 +1,94 @@
+extends ../layout/index.pug
+
+mixin newsArticleThumb(article)
+  .news-article.thumb-article(data-lazy-bg-image=article.imageSrc)
+    .details
+      .date
+        =article.shortDate
+      .title
+        a(href='/uutiset/' + article.slug)
+          !=article.title
+      
+mixin banner(banner)
+  .header-banner-item(data-lazy-bg-image=banner.imageSrc,data-lazy-bg-size='.carousel-inner')
+    .container.banner-content-container
+      if banner.link
+        a.banner-link(href=banner.link,target="_blank")
+      h1(style=banner.style)
+        =banner.title
+      .banner-text-container
+        .banner-text(style=banner.style)
+          !=banner.contents
+      
+mixin banners-slider(banners) 
+  .header-banner
+    #banner-slide.carousel.slide(data-ride='carousel')
+      .banner-carousel-indicators
+        ol.carousel-indicators
+          each banner, bannerIndex in banners
+            li(data-target='#banner-slide', data-slide-to='#{bannerIndex}')
+      .banner-carousel-items
+        .carousel-inner(role='listbox')
+          each banner, bannerIndex in banners
+            - var itemClass=bannerIndex == 0 ? "carousel-item active" : 'carousel-item'
+            div(class=itemClass)
+              +banner(banner)
+      .banner-carousel-controls
+        a.left.carousel-control(href='#banner-slide', role='button', data-slide='prev')
+          span.icon-prev(aria-hidden='true')
+          span.sr-only Previous
+        a.right.carousel-control(href='#banner-slide', role='button', data-slide='next')
+          span.icon-next(aria-hidden='true')
+          span.sr-only Next
+      
+block styles
+  link(rel="stylesheet", href="/css/index.min.css")
+
+block scripts
+  script(defer="defer", type="text/javascript", src="//cdn.metatavu.io/libs/bigtext/0.1.8/bigtext.js")
+  script(defer="defer", type="text/javascript", src="//cdn.metatavu.io/libs/masonry/4.1.1/masonry.pkgd.min.js")
+  script(defer="defer", type="text/javascript", src="//cdn.metatavu.io/libs/jquery.imagesloaded/4.1.1/imagesloaded.pkgd.min.js")
+  script(defer="defer", type="text/javascript", src="/js/index.js")
+
+block content
+  .container-fluid.no-gutters
+    .row
+      .col-xs-24
+        +banners-slider(banners)
+        
+  .container.no-gutters
+    .row
+      .col-xs
+        .row
+          .col-lg-18
+          .col-lg-6.no-gutters.thumb-articles-container
+            each newsArticle in news
+              .row
+                .col-xs
+                  +newsArticleThumb(newsArticle)
+            .row
+              .col-xs
+                a.all-news-link(href="#")
+                  | > Katso kaikki uutiset
+              
+
+  .container
+    .social-media-items
+      .social-media-items-grid-sizer
+      each socialMediaItem in socialMediaItems
+        .social-media-item(data-source=socialMediaItem.source)
+          .header
+            case socialMediaItem.source
+              when 'twitter'
+                i.icon.fa.fa-twitter(aria-hidden="true")
+              when 'facebook'
+                i.icon.fa.fa-facebook-official(aria-hidden="true")
+              when 'instagram'
+                i.icon.fa.fa-instagram(aria-hidden="true")
+            a.link(href=socialMediaItem.link, target="_blank")
+              =socialMediaItem.shortDate
+          .content
+            if (socialMediaItem.image) 
+              img(src=socialMediaItem.image)
+            .text
+              !=socialMediaItem.text
