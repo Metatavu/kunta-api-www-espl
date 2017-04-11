@@ -29,7 +29,7 @@
       console.error(message);
     }
     
-    var bannerSrc = '/gfx/layout/mikkeli-page-banner-default.jpg';
+    var bannerSrc = '/gfx/layout/default_banner.jpg';
     
     res.status(status);
     res.render(util.format('error/%d', page), Object.assign(req.kuntaApi.data, {

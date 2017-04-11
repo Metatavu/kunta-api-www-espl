@@ -60,8 +60,46 @@ block content
     .row
       .col-xs
         .row
-          .col-lg-18
-          .col-lg-6.no-gutters.thumb-articles-container
+          .col-lg-17
+            .row
+              .col-lg-12.no-gutter-right
+                .index-box.most-wanted-container
+                  .box-banner.banner-most-wanted
+                    h3
+                      |Etsityimmät
+                  if menus['etsityimmat'] 
+                    ul
+                      each item in menus['etsityimmat'].items
+                        li.nav-item
+                          a.nav-link(href=item.url)
+                            =item.label
+              .col-md-12
+                .index-box.shortcuts-container
+                  .box-banner.banner-shortcuts
+                    h3
+                      |Oikopolut
+                  if menus['oikopolut']     
+                    ul
+                      each item in menus['oikopolut'].items
+                        li.nav-item
+                          a.nav-link(href=item.url)
+                            =item.label
+            .row
+              .col-lg-12.no-gutter-right
+                .index-box.contacts-container
+                  .box-banner.banner-contacts
+                    h3
+                      |Yhteystiedot   
+              .col-lg-12
+                .index-box.tilannehuone-container
+                  .box-banner.banner-tilannehuone
+                    h3
+                      |Tilannehuone
+          .col-lg-7.thumb-articles-container
+            .row
+              .col-xs
+                h3.news-articles-header
+                  | Ajankohtaista
             each newsArticle in news
               .row
                 .col-xs
@@ -73,6 +111,8 @@ block content
               
 
   .container
+    .social-media-header
+      h1 Some
     .social-media-items
       .social-media-items-grid-sizer
       each socialMediaItem in socialMediaItems

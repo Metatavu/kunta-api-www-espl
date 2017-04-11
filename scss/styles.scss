@@ -235,17 +235,14 @@ footer {
     text-decoration: underline;
   }
 
+  .container {
+    padding-top: 45px;
+  }
+  
   img {
-    margin-top: 64px;
     margin-bottom: 10px;
-  }
-
-  .footer-logo-container {
-    margin-top: 64px;
-  }
-
-  .footer-address-container {
-    margin-top: 26px;
+    max-width: 100%;
+    height: auto;
   }
   
   h4 {

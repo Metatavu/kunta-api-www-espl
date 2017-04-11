@@ -38,7 +38,7 @@
         });
     });
     
-    /*app.get(util.format('%s/:slug', Common.NEWS_FOLDER), (req, res, next) => {
+    app.get(util.format('%s/:slug', Common.NEWS_FOLDER), (req, res, next) => {
       var slug = req.params.slug;
 
       if (!slug) {
@@ -61,7 +61,7 @@
             return;
           }
 
-          var bannerSrc = '/gfx/layout/mikkeli-page-banner-default.jpg';
+          var bannerSrc = '/gfx/layout/default_banner.jpg';
           res.render('pages/news-article.pug', Object.assign(req.kuntaApi.data, {
             id: newsArticle.id,
             slug: newsArticle.slug,
@@ -81,9 +81,9 @@
             error: err
           });
         });
-    });*/
+    });
 
-    /*app.get(Common.NEWS_FOLDER + '/', (req, res, next) => {
+    app.get(Common.NEWS_FOLDER + '/', (req, res, next) => {
       var tag = req.query.tag;
 
       if (!tag) {
@@ -105,7 +105,7 @@
           });
 
           var latestArticles  = data[1];
-          var bannerSrc = '/gfx/layout/mikkeli-page-banner-default.jpg';
+          var bannerSrc = '/gfx/layout/default_banner.jpg';
           
           res.render('pages/news-list.pug', Object.assign(req.kuntaApi.data, {
             newsArticles: newsArticles,
@@ -120,7 +120,7 @@
             error: err
           });
         });
-    });*/
+    });
     
   };
 
