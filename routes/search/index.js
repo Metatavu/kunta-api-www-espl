@@ -13,8 +13,8 @@
       var preferLanguages = req.headers['accept-language'];
       
       new ModulesClass(config)
-        .pages.search(search, preferLanguages, Common.SEARCH_RESULTS_PER_TYPE)
-        .files.search(search, Common.SEARCH_RESULTS_PER_TYPE)
+        .pages.search(search, preferLanguages, 0, Common.SEARCH_RESULTS_PER_TYPE)
+        .files.search(search, 0, Common.SEARCH_RESULTS_PER_TYPE)
         .callback(function(data) {
           var pages = data[0];
           var files = data[1];
