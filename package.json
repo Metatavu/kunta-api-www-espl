@@ -1,6 +1,6 @@
 {
   "name": "kunta-api-www-espl",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": " Kunta API visualization layer implementation for ESPL",
   "main": "index.js",
   "scripts": {
