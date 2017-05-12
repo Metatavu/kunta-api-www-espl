@@ -5,7 +5,16 @@
   const _ = require('lodash');
   
   module.exports = (app, config, ModulesClass) => {
-
+    
+    app.options('/incidents', (req, res, next) => {
+      res
+        .header('Access-Control-Allow-Origin', '*')
+        .header('Access-Control-Allow-Methods', 'GET,OPTIONS')
+        .header('Access-Control-Allow-Headers', 'Content-Type, X-Requested-With')
+        .status(204)
+        .send();
+    });
+    
     app.get('/incidents', (req, res, next) => {
       const area = req.query.area;
       
@@ -21,7 +30,11 @@
               });
             }
             
-            res.send(incidents);
+            res
+              .header('Access-Control-Allow-Origin', '*')
+              .header('Access-Control-Allow-Methods', 'GET, OPTIONS')
+              .header('Access-Control-Allow-Headers', 'Content-Type, X-Requested-With')
+              .send(incidents);
           } else {
             next({
               status: 404
