@@ -25,8 +25,8 @@
           
           if (result && result.length) {
             if (area) {
-              incidents = _.filter(incidents, (incident) => {
-                return incident.areas.includes(area);
+              incidents = _.filter(incidents||[], (incident) => {
+                return _.includes((incident.areas||[]), area);
               });
             }
             
