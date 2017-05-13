@@ -36,10 +36,28 @@
             fragmentMap[fragment.slug] = fragment.contents;
           });
 
+          var incidentUrls = [];
+          var incidentsConfig = config.get('incidents:urls');
+          var incidentsPollInterval = config.get('incidents:pollInterval') || 30000;
+          var incidentScriptVersion = config.get('incidents:scriptVersion');
+          
+          if (Array.isArray(incidentsConfig)) {
+            for (let i = 0; i < incidentsConfig.length; i++) {
+              var incidentUrl = incidentsConfig[i].url;
+              if (incidentsConfig[i].area) {
+                incidentUrl += util.format('?area=%s', encodeURIComponent(incidentsConfig[i].area));
+              }
+              incidentUrls.push(incidentUrl);
+            }
+          }
+
           req.kuntaApi = {
             data: {
               menus: menus,
-              fragmentMap: fragmentMap
+              fragmentMap: fragmentMap,
+              incidentUrls: incidentUrls.join(','),
+              incidentsPollInterval: incidentsPollInterval,
+              incidentScriptVersion: incidentScriptVersion
             }
           };
 
