@@ -113,6 +113,11 @@ block content
                   .box-banner.banner-tilannehuone
                     h3
                       |Tilannehuone
+                  ul
+                    each emergency in emergencies
+                      li.nav-item(title=emergency.description)
+                        a.nav-link(href=emergency.url)
+                          =emergency.shortDate + " " + emergency.location + " " + emergency.type + ": " + emergency.extent
           .col-lg-7.thumb-articles-container
             .row
               .col-xs.no-gutters-medium
