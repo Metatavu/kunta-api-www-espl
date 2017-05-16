@@ -155,7 +155,6 @@
 
 .contacts-container {
   color: $contacts-text-color;
-  background-image: url('/gfx/layout/espl_kartta.png');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center center;
@@ -163,6 +162,17 @@
   
   .banner-contacts {
     background-color: $contacts-bg-color;
+  }
+  
+  .contact-image-container {
+    width: 100%;
+  
+    img {
+      width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+      display: block;
+    }
   }
 }
 

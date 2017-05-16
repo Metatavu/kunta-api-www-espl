@@ -48,6 +48,7 @@ block scripts
   script(defer="defer", type="text/javascript", src="//cdn.metatavu.io/libs/bigtext/0.1.8/bigtext.js")
   script(defer="defer", type="text/javascript", src="//cdn.metatavu.io/libs/masonry/4.1.1/masonry.pkgd.min.js")
   script(defer="defer", type="text/javascript", src="//cdn.metatavu.io/libs/jquery.imagesloaded/4.1.1/imagesloaded.pkgd.min.js")
+  script(defer="defer", type="text/javascript", src="//cdn.metatavu.io/libs/imagemapster/1.2.14-beta1/jquery.imagemapster.min.js")
   script(defer="defer", type="text/javascript", src="/js/index.js")
 
 block content
@@ -62,7 +63,7 @@ block content
         .row
           .col-lg-17
             .row
-              .col-lg-12.no-gutter-right
+              .col-lg-12.no-gutter-right.no-gutters-medium
                 .index-box.most-wanted-container
                   .box-banner.banner-most-wanted
                     h3
@@ -73,7 +74,7 @@ block content
                         li.nav-item
                           a.nav-link(href=item.url)
                             =item.label
-              .col-md-12
+              .col-lg-12.no-gutters-medium
                 .index-box.shortcuts-container
                   .box-banner.banner-shortcuts
                     h3
@@ -85,27 +86,44 @@ block content
                           a.nav-link(href=item.url)
                             =item.label
             .row
-              .col-lg-12.no-gutter-right
+              .col-lg-12.no-gutter-right.no-gutters-medium
                 .index-box.contacts-container
                   .box-banner.banner-contacts
                     h3
-                      |Yhteystiedot   
-              .col-lg-12
+                      |Yhteystiedot
+                    .contact-image-container
+                      img.contact-image.img-responsive(usemap='#contact-image-map', src='/gfx/layout/espl_kartta.png')
+                      map#contact-image-map(name='contact-image-map')
+                        area#enonkoski(alt='', title='enonkoski', href='/sisalto/yhteystiedot/enonkoski', shape='poly', coords='311,164,334,179,333,191,344,202,364,194,370,180,344,149,344,144,332,137,325,140,330,150,327,156,313,152', style='outline:none;', target='_self')
+                        area#savonlinna(alt='', title='savonlinna', href='sisalto/yhteystiedot/savonlinna', shape='poly', coords='345,139,345,126,354,119,358,126,372,124,371,108,380,104,385,112,398,143,406,187,423,199,431,229,418,270,402,278,398,289,362,306,350,306,344,297,343,292,315,281,317,271,311,264,313,255,307,241,293,233,293,225,307,216,320,215,330,209,320,193,309,174,296,170,286,164,288,157,311,165,326,174,333,179,333,191,345,198,361,192,367,181,358,173,348,157', style='outline:none;', target='_self')
+                        area#heinavesi(alt='', title='heinavesi', href='sisalto/yhteystiedot/heinavesi', shape='poly', coords='314,147,301,127,292,132,286,124,275,123,280,113,274,106,277,99,288,97,286,77,296,76,313,56,329,56,347,73,349,81,364,90,363,103,370,110,372,121,361,124,354,122,345,125,347,137,341,141,332,136,325,140,331,150,325,154', style='outline:none;', target='_self')
+                        area#rantasalmi(alt='', title='rantasalmi', href='sisalto/yhteystiedot/rantasalmi', shape='poly', coords='251,153,247,162,252,174,234,183,227,192,228,202,249,211,256,204,291,226,307,213,318,214,326,207,321,193,313,180,305,173,295,169,283,164,285,156', style='outline:none;', target='_self')
+                        area#sulkava(alt='', title='sulkava', href='sisalto/yhteystiedot/sulkava', shape='poly', coords='267,214,258,225,265,233,258,244,270,256,259,259,278,277,292,282,302,291,339,305,346,304,340,292,315,281,319,273,311,264,313,257,309,245,293,234,292,227', style='outline:none;', target='_self')
+                        area#joroinen(alt='', title='joroinen', href='sisalto/yhteystiedot/joroinen', shape='poly', coords='214,122,203,135,190,139,197,165,208,168,207,193,219,205,226,198,229,186,241,180,251,178,249,162,252,150,222,140', style='outline:none;', target='_self')
+                        area#juva(alt='', title='juva', href='sisalto/yhteystiedot/juva', shape='poly', coords='180,188,177,199,186,209,183,233,202,267,221,271,231,282,235,308,241,299,243,280,255,285,266,272,259,261,268,256,257,247,262,232,258,224,267,215,259,206,246,211,228,203,216,205,207,197,206,191,193,195', style='outline:none;', target='_self')
+                        area#puumala(alt='', title='puumala', href='sisalto/yhteystiedot/puumala', shape='poly', coords='265,273,293,282,301,291,340,308,334,315,314,321,299,312,278,342,259,349,240,350,217,346,214,338,218,327,222,321,235,311,244,302,243,288,245,282,258,282,257,287', style='outline:none;', target='_self')
+                        area#mikkeli(alt='', title='mikkeli', href='sisalto/yhteystiedot/mikkeli', shape='poly', coords='151,213,117,185,123,173,131,163,138,167,149,161,184,209,181,231,197,269,212,274,227,281,233,307,218,321,216,335,216,346,228,346,206,361,200,377,187,380,180,393,171,389,172,372,160,358,150,359,134,350,139,347,148,347,151,340,142,329,142,322,133,317,135,285,122,258,118,239,128,225', style='outline:none;', target='_self')
+                        area#pieksamaki(alt='', title='pieksamaki', href='sisalto/yhteystiedot/pieksamaki', shape='poly', coords='121,172,99,130,112,124,101,107,116,97,130,102,134,98,146,96,155,101,176,91,208,121,205,132,190,136,194,164,204,169,204,189,191,194,181,189,179,200,153,164,142,166,133,164', style='outline:none;', target='_self')
+                        area#kangasniemi(alt='', title='kangasniemi', href='sisalto/yhteystiedot/kangasniemi', shape='poly', coords='98,134,119,176,117,186,151,212,128,224,117,236,102,244,91,237,67,239,61,218,68,208,51,179,62,160,80,143,91,151', style='outline:none;', target='_self')
+                        area#hirvensalmi(alt='', title='hirvensalmi', href='sisalto/yhteystiedot/hirvensalmi', shape='poly', coords='66,240,90,237,99,245,116,236,119,255,131,276,135,301,132,315,119,310,111,300,99,299,91,308,83,308,78,293,83,276,68,257', style='outline:none;', target='_self')
+                        area#mantyharju(alt='', title='mantyharju', href='sisalto/yhteystiedot/mantyharju', shape='poly', coords='61,349,87,350,88,336,83,325,96,320,94,309,99,302,114,303,116,312,132,315,141,325,151,341,148,346,138,345,135,352,146,358,157,359,170,371,171,388,146,398,127,386,123,371,112,372,98,382,88,368,80,369', style='outline:none;', target='_self')
+                        area#pertunmaa(alt='', title='pertunmaa', href='sisalto/yhteystiedot/pertunmaa', shape='poly', coords='63,349,60,340,53,334,51,320,52,311,64,289,79,292,81,306,91,311,97,315,85,324,86,334,87,348', style='outline:none;', target='_self')
+              .col-lg-12.no-gutters-medium
                 .index-box.tilannehuone-container
                   .box-banner.banner-tilannehuone
                     h3
                       |Tilannehuone
           .col-lg-7.thumb-articles-container
             .row
-              .col-xs
+              .col-xs.no-gutters-medium
                 h3.news-articles-header
                   | Ajankohtaista
             each newsArticle in news
               .row
-                .col-xs
+                .col-xs.no-gutters-medium
                   +newsArticleThumb(newsArticle)
             .row
-              .col-xs
+              .col-xs.no-gutters-medium
                 a.all-news-link(href="#")
                   | > Katso kaikki uutiset
               
