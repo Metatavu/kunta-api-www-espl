@@ -16,6 +16,7 @@
         .news.latest(0, 3)
         .banners.list()
         .socialMedia.latest(Common.SOCIAL_MEDIA_POSTS)
+        .emergencies.list("START", "DESC", Common.EMERGENCY_COUNT)
         .callback(function(data) {
 
           var news = _.clone(data[0]).map(newsArticle => {
@@ -47,11 +48,18 @@
               "shortDate": moment(socialMediaItem.created).format("D.M.YYYY hh:mm")
             });
           });
+
+          var emergencies = _.clone(data[3] || []).map(emergency => {
+            return Object.assign(emergency, {
+              "shortDate": moment(emergency.time).format("D.M.YYYY hh:mm")
+            });
+          });
           
           res.render('pages/index.pug', Object.assign(req.kuntaApi.data, {
             banners: banners,
             socialMediaItems: socialMediaItems,
-            news: news
+            news: news,
+            emergencies: emergencies
           }));
 
         }, (err) => {

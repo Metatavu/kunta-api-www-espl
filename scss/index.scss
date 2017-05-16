@@ -183,6 +183,12 @@
   .banner-tilannehuone {
     background-image: url('/gfx/layout/tilannehuone.jpg');
   }
+  
+  a {
+    @include font-ultra(16px); 
+    color: $shortcut-text-color;
+  }
+  
 }
 
 .thumb-articles-container {
