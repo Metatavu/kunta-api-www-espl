@@ -16,4 +16,23 @@
     });
 
   });
+  
+  
+    $(window).on('load', function(){
+      $('.contact-image').mapster({
+        stroke: false,
+        fillColor: 'ffffff',
+        fillOpacity: 0.2,
+        highlight: true,
+        isSelectable: false,
+        mapKey: 'id'
+      });
+      
+      $(window).resize(function () {
+        var width = $('.banner-contacts').width()
+        $('.contact-image').mapster('resize',width);
+      });
+      
+    });
+  
 }).call(this);
