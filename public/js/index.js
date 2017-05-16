@@ -25,6 +25,7 @@
         fillOpacity: 0.2,
         highlight: true,
         isSelectable: false,
+        clickNavigate: true,
         mapKey: 'id'
       });
       
