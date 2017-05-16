@@ -28,6 +28,9 @@
       return '/uutiset';
     }
     
+    static get EMERGENCY_COUNT() {
+      return 5;
+    }    
     
     static get SEARCH_RESULTS_PER_TYPE() {
       return 5;

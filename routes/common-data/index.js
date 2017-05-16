@@ -6,6 +6,7 @@
 
   const _ = require('lodash');
   const Common = require(__dirname + '/../common');
+  const util = require('util');
 
   module.exports = (app, config, ModulesClass) => {
 
