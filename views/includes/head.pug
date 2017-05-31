@@ -12,7 +12,7 @@ head
   script(defer="defer",type="text/javascript", src="/js/common.js")
   if incidentUrls
     script(defer="defer",type="text/javascript", src="//cdn.metatavu.io/libs/kunta-api-incidents/" + incidentScriptVersion + "/incidents.min.js", id="incidents-script", data-urls=incidentUrls, data-interval=incidentsPollInterval)
-
+    link(rel="stylesheet", href="//cdn.metatavu.io/libs/kunta-api-incidents/" + incidentScriptVersion + "/incidents.min.css")
   block styles
   block scripts
   
