@@ -32,6 +32,10 @@
       return 5;
     }    
     
+    static get NEWS_COUNT_PAGE() { 
+      return 10;
+    }
+    
     static get SEARCH_RESULTS_PER_TYPE() {
       return 5;
     }
