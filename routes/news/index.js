@@ -98,12 +98,14 @@
               "imageSrc": newsArticle.imageId ? util.format('/newsArticleImages/%s/%s', newsArticle.id, newsArticle.imageId) : null
             });
           });
+          const bannerSrc = '/gfx/layout/default_banner.jpg';
           
           res.render('pages/news-list.pug', Object.assign(req.kuntaApi.data, {
             page: page,
             lastPage: lastPage,
             newsArticles: newsArticles,
             tag: tag,
+            bannerSrc: bannerSrc,
             breadcrumbs : [{path: util.format('%s/?tag=%s', Common.NEWS_FOLDER, tag), title: tag ? util.format("Uutiset tagilla '%s'", tag) : 'Uutiset'}]
           }));
         }, (err) => {
