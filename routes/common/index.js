@@ -17,7 +17,7 @@
     }
     
     static get SOCIAL_MEDIA_POSTS() { 
-      return 3 * 3;
+      return 2 * 5;
     }
     
     static get FILES_FOLDER() { 
@@ -38,6 +38,14 @@
     
     static get SEARCH_RESULTS_PER_TYPE() {
       return 5;
+    }
+    
+    static get DEFAULT_NEWS_IMAGE() {
+      return _.sample(['/gfx/default/news-1.jpg', '/gfx/default/news-2.jpg', '/gfx/default/news-3.jpg']);
+    }
+    
+    static get DEFAULT_NEWS_IMAGE_THUMB() {
+      return _.sample(['/gfx/default/news-1-thumb.jpg', '/gfx/default/news-2-thumb.jpg', '/gfx/default/news-3-thumb.jpg']);
     }
     
     static resolveLinkType(link) {

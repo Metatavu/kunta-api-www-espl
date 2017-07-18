@@ -22,7 +22,7 @@
           var news = _.clone(data[0]).map(newsArticle => {
             return Object.assign(newsArticle, {
               "shortDate": moment(newsArticle.published).format("D.M.YYYY"),
-              "imageSrc": newsArticle.imageId ? util.format('/newsArticleImages/%s/%s', newsArticle.id, newsArticle.imageId) : null
+              "imageSrc": newsArticle.imageId ? util.format('/newsArticleImages/%s/%s', newsArticle.id, newsArticle.imageId) : Common.DEFAULT_NEWS_IMAGE_THUMB
             });
           });
           

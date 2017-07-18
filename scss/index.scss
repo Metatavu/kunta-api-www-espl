@@ -110,6 +110,7 @@
     padding: 0;
     
     li {
+      @include font-bold(16px);
       padding-left: 25px;
       padding-top: 10px;
       padding-bottom: 10px;
@@ -129,7 +130,6 @@
   background-color: $most-wanted-bg-color;
   
   a {
-    @include font-ultra(16px); 
     color: $most-wanted-text-color;
   }
   
@@ -144,7 +144,6 @@
   background-color: $shortcut-bg-color;
     
   a {
-    @include font-ultra(16px); 
     color: $shortcut-text-color;
   }
 
@@ -185,7 +184,6 @@
   }
   
   a {
-    @include font-ultra(16px); 
     color: $shortcut-text-color;
   }
   
@@ -215,7 +213,7 @@
     background: $news-date-bg-color;
     color: $news-date-text-color;
     display: inline-block;
-    @include font-std(16px);
+    @include font-bold(16px);
     padding: 2px 15px;
   }
 
