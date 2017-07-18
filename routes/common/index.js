@@ -17,7 +17,7 @@
     }
     
     static get SOCIAL_MEDIA_POSTS() { 
-      return 3 * 3;
+      return 2 * 5;
     }
     
     static get FILES_FOLDER() { 

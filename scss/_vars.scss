@@ -6,14 +6,19 @@ $break-medium: 991px;
 $break-large: 1199px;
 
 @mixin font-ultra($size) {
-  font-family: 'Titillium Web', sans-serif;
+  font-family: 'Cairo', sans-serif;
   font-size: $size;
   font-weight: 900;
-  letter-spacing: 1.5px;
+}
+
+@mixin font-bold($size) {
+  font-family: 'Cairo', sans-serif;
+  font-size: $size;
+  font-weight: 600;
 }
 
 @mixin font-std($size) {
-  font-family: 'Titillium Web', sans-serif;
+  font-family: 'Cairo', sans-serif;
   font-size: $size;
-  font-weight: 400;
+  font-weight: 300;
 }
