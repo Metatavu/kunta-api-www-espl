@@ -4,6 +4,10 @@
 @import 'vars';
 @import 'colors';
 
+body {
+  @include font-std(16px);
+}
+
 .content-container {
   overflow-x: hidden;
   overflow: hidden;
