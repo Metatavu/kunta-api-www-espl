@@ -69,7 +69,7 @@
             tags: newsArticle.tags,
             contents: Common.processPageContent('/', newsArticle.contents),
             sidebarContents: Common.getSidebarContent(newsArticle.contents),
-            imageSrc: newsArticle.imageId ? util.format('/newsArticleImages/%s/%s', newsArticle.id, newsArticle.imageId) : null,
+            imageSrc: newsArticle.imageId ? util.format('/newsArticleImages/%s/%s', newsArticle.id, newsArticle.imageId) : Common.DEFAULT_NEWS_IMAGE,
             bannerSrc: bannerSrc,
             siblings: siblings,
             breadcrumbs : [{path: util.format('%s/%s', Common.NEWS_FOLDER, newsArticle.slug), title: newsArticle.title }]
@@ -95,7 +95,7 @@
           const newsArticles = data[0].splice(0, perPage).map(newsArticle => {
             return Object.assign(newsArticle, {
               "shortDate": moment(newsArticle.published).format("D.M.YYYY"),
-              "imageSrc": newsArticle.imageId ? util.format('/newsArticleImages/%s/%s', newsArticle.id, newsArticle.imageId) : null
+              "imageSrc": newsArticle.imageId ? util.format('/newsArticleImages/%s/%s', newsArticle.id, newsArticle.imageId) : Common.DEFAULT_NEWS_IMAGE_THUMB
             });
           });
           const bannerSrc = '/gfx/layout/default_banner.jpg';
