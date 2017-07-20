@@ -90,6 +90,8 @@
 
       const $ = cheerio.load(content);
 
+      $('.gallery-icon > a').attr('data-lightbox', 'espl');
+
       $('a[href]').each((index, link) => {
         var href = $(link).attr('href');
         $(link).attr('href', Common.processLink(currentPage, href));
