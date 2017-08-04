@@ -45,13 +45,13 @@
 
           var socialMediaItems = _.clone(data[2] || []).map(socialMediaItem => {
             return Object.assign(socialMediaItem, {
-              "shortDate": moment(socialMediaItem.created).format("D.M.YYYY hh:mm")
+              "shortDate": moment(socialMediaItem.created).format("D.M.YYYY HH:mm")
             });
           });
 
           var emergencies = _.clone(data[3] || []).map(emergency => {
             return Object.assign(emergency, {
-              "shortDate": moment(emergency.time).format("D.M.YYYY hh:mm")
+              "shortDate": moment(emergency.time).format("D.M.YYYY HH:mm")
             });
           });
           
