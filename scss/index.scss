@@ -46,6 +46,7 @@
       h1 {
         @include font-ultra(70px);
         top: auto;
+        bottom: auto;
         font-weight: 900;
         letter-spacing: 3px;
         display: inline-block;
@@ -55,7 +56,7 @@
         
         @media (max-width: $break-small) { 
           padding-top: 0;
-          top: -70px;
+          bottom: 70px;
         }
         
         @media (max-width: $break-x-small) { 
