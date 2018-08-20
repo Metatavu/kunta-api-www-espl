@@ -45,6 +45,8 @@
     
       h1 {
         @include font-ultra(70px);
+        top: auto;
+        bottom: auto;
         font-weight: 900;
         letter-spacing: 3px;
         display: inline-block;
@@ -53,11 +55,14 @@
         margin-right: -10px;
         
         @media (max-width: $break-small) { 
-          padding-top: 60px;
+          padding-top: 0;
+          bottom: 70px;
         }
         
         @media (max-width: $break-x-small) { 
           @include font-ultra(40px);
+          top: 20px;
+          padding-top: 0;
         }
       }
       
