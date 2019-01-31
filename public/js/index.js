@@ -2,6 +2,21 @@
   'use strict';
 
   $(document).ready(function () {
+
+    $(document).on('click', '.toggle-warning', function() {
+      if ($(this).hasClass('warning-closed')) {
+        $(this).removeClass('warning-closed');
+        $(this).removeClass('fa-arrow-circle-down');
+        $(this).addClass('fa-arrow-circle-up');
+      } else {
+        $(this).addClass('warning-closed');
+        $(this).removeClass('fa-arrow-circle-up');
+        $(this).addClass('fa-arrow-circle-down');
+      }
+
+      var id = $(this).closest('.warning-container').attr('data-id');
+      $('#' + id).slideToggle();
+    });
     
     $('.social-media-items').css('opacity', '0');
 
