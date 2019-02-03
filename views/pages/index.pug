@@ -127,19 +127,35 @@ block content
                           if emergency.extent 
                            |: 
                            =emergency.extent
-          .col-lg-7.thumb-articles-container
-            .row
-              .col-xs.no-gutters-medium
-                h3.news-articles-header
-                  | Ajankohtaista
-            each newsArticle in news
+          .col-lg-7.sidebar-container
+            if environmentalWarnings && environmentalWarnings.length > 0
               .row
-                .col-xs.no-gutters-medium
-                  +newsArticleThumb(newsArticle)
+                .col.warnings-container
+                  h3.warnings-header
+                    | Varoitukset 5 vrk
+                  each warning in environmentalWarnings
+                    div(data-id=warning.id, class="warning-container")
+                      .warning-header-container
+                        h3.warning-header
+                          != warning.fi.header
+                        i.icon.fa.fa-arrow-circle-down.toggle-warning.warning-closed(aria-hidden="true")
+                      .warning-text-container(id=warning.id)
+                        p.warning-text
+                          != warning.fi.text
             .row
-              .col-xs.no-gutters-medium
-                a.all-news-link(href="/uutiset")
-                  | > Katso kaikki uutiset
+              .col.thumb-articles-container
+                .row
+                  .col-xs.no-gutters-medium
+                    h3.news-articles-header
+                      | Ajankohtaista
+                each newsArticle in news
+                  .row
+                    .col-xs.no-gutters-medium
+                      +newsArticleThumb(newsArticle)
+                .row
+                  .col-xs.no-gutters-medium
+                    a.all-news-link(href="/uutiset")
+                      | > Katso kaikki uutiset
               
 
   .container
