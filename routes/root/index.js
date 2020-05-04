@@ -7,7 +7,30 @@
   const util = require('util');
   const moment = require('moment');
   const _ = require('lodash');
+  const request = require('request');
   const Common = require(__dirname + '/../common');
+
+  function loadEmergencies(url, area, maxResults, callback) {
+    request(url, function (error, _response, body) {
+      if (error) {
+        callback([]);
+      } else {
+        const result = JSON.parse(body).filter((emergency) => {
+          return (emergency.area || "") === area;
+        });
+
+        result.sort((a, b) => {
+          return moment(a.time).isBefore(moment(b.time)) ? 1 : -1;
+        });
+        
+        callback(result.map(emergency => {
+          return Object.assign(emergency, {
+            "shortDate": moment(emergency.time).format("D.M.YYYY HH:mm")
+          });
+        }).splice(0, maxResults));
+      }
+    });    
+  }
 
   module.exports = (app, config, ModulesClass) => {
     
@@ -20,7 +43,6 @@
         .news.latest(0, 3)
         .banners.list()
         .socialMedia.latest(Common.SOCIAL_MEDIA_POSTS)
-        .emergencies.list("START", "DESC", Common.EMERGENCY_COUNT)
         .environmentalWarnings.list("START", "DESC", null, fiveDaysFromNow, new Date(), null)
         .callback(function(data) {
 
@@ -30,7 +52,7 @@
               "imageSrc": newsArticle.imageId ? util.format('/newsArticleImages/%s/%s', newsArticle.id, newsArticle.imageId) : Common.DEFAULT_NEWS_IMAGE_THUMB
             });
           });
-          
+
           var banners = _.clone(data[1] || []).map(banner => {
             var styles = [];
             
@@ -53,14 +75,8 @@
               "shortDate": moment(socialMediaItem.created).format("D.M.YYYY HH:mm")
             });
           });
-
-          var emergencies = _.clone(data[3] || []).map(emergency => {
-            return Object.assign(emergency, {
-              "shortDate": moment(emergency.time).format("D.M.YYYY HH:mm")
-            });
-          });
-
-          var environmentalWarnings = _.clone(data[4] || []).map(environmentalWarning => {
+          
+          var environmentalWarnings = _.clone(data[3] || []).map(environmentalWarning => {
             const fiObjectIndex = _.findIndex(environmentalWarning.description, function(description) { 
               return description.language == 'fi'; 
             });
@@ -76,13 +92,15 @@
             };
           });
           
-          res.render('pages/index.pug', Object.assign(req.kuntaApi.data, {
-            banners: banners,
-            socialMediaItems: socialMediaItems,
-            news: news,
-            emergencies: emergencies,
-            environmentalWarnings: environmentalWarnings
-          }));
+          loadEmergencies(config.get("emergencies:url"), config.get("emergencies:area"), Common.EMERGENCY_COUNT, (emergencies) => {
+            res.render('pages/index.pug', Object.assign(req.kuntaApi.data, {
+              banners: banners,
+              socialMediaItems: socialMediaItems,
+              news: news,
+              emergencies: emergencies || [],
+              environmentalWarnings: environmentalWarnings
+            }));                        
+          });
 
         }, (err) => {
           next({
