@@ -119,14 +119,17 @@ block content
                         a.nav-link(href=emergency.url)
                           =emergency.shortDate
                           if emergency.location
-                           | 
-                           =emergency.location
+                          | 
+                          =emergency.location
                           if emergency.type
-                           | 
-                           =emergency.type
+                          | 
+                          =emergency.type
                           if emergency.extent 
-                           |: 
-                           =emergency.extent
+                          |: 
+                          =emergency.extent
+                    else
+                      div(style="text-align: left; margin-left: 20px; margin-top: 20px")
+                        |Alueella ei juuri nyt ole hälytyksiä
           .col-lg-7.sidebar-container
             if environmentalWarnings && environmentalWarnings.length > 0
               .row
