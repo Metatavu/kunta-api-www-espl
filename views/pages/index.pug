@@ -157,27 +157,3 @@ block content
                   .col-xs.no-gutters-medium
                     a.all-news-link(href="/uutiset")
                       | > Katso kaikki uutiset
-              
-
-  .container
-    .social-media-header
-      h1 Some
-    .social-media-items
-      .social-media-items-grid-sizer
-      each socialMediaItem in socialMediaItems
-        .social-media-item(data-source=socialMediaItem.source)
-          .header
-            case socialMediaItem.source
-              when 'twitter'
-                i.icon.fa.fa-twitter(aria-hidden="true")
-              when 'facebook'
-                i.icon.fa.fa-facebook-official(aria-hidden="true")
-              when 'instagram'
-                i.icon.fa.fa-instagram(aria-hidden="true")
-            a.link(href=socialMediaItem.link, target="_blank")
-              =socialMediaItem.shortDate
-          .content
-            if (socialMediaItem.image) 
-              img(src=socialMediaItem.image)
-            .text
-              !=socialMediaItem.text
